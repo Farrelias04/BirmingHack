@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import localRecipes from "./foodData/localRecipes";
 import { applyFilter } from "../utils/filters";
-import RecipeCard from "../components/RecipeCard";
-import InputPanel from "../components/InputPanel";
+import RecipeCard from "./components/RecipeCard";
+import InputPanel from "./components/InputPanel";
 
 export default function Home() {
   const router = useRouter();
