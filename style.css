@@ -8,14 +8,14 @@ body {
 header {
   background: linear-gradient(135deg, #a70723, #be2811);
   color: #ffedb7;
-  padding: 50px 16px;
-  text-align: center;
-  font-family: 'Press Start 2P', cursive;
+  padding: 50px 20px;
 }
 
 header h1 {
   margin: 0 0 8px;
   font-size: 2rem;
+  text-align: left;
+  font-family: 'Press Start 2P', cursive;
 }
 
 header p {
@@ -191,7 +191,7 @@ button.secondary:hover {
   margin-top: 10px;
 }
 
-.log {
+log {
   margin: 5px;
   width: 20%;
   float: right;
