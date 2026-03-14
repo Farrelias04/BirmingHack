@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Lazarus</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Lazat'Rus</h1>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>Add Ingredients</h2>
+      <div class="input-row">
+        <input type="text" id="ingredientName" placeholder="e.g. chicken" />
+        <input type="date" id="expiryDate" />
+        <button id="addBtn">Add Ingredient</button>
+      </div>
+      <p class="muted">
+        Tip: Add ingredients with expiry dates, then search recipes using TheMealDB API.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Your Ingredients</h2>
+      <ul id="ingredientList" class="ingredient-list"></ul>
+      <p id="ingredientEmpty" class="empty">No ingredients added yet.</p>
+    </section>
+
+    <section class="section">
+      <h2>Find Recipes</h2>
+      <button id="findRecipesBtn" class="secondary">Find Recipes</button>
+      <p id="status" class="status"></p>
+      <div id="recipeResults" class="recipe-grid"></div>
+      <p id="recipeEmpty" class="empty">
+        No recipes yet. Add ingredients and click "Find Recipes".
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Beginner version using plain HTML, CSS, and JavaScript.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
