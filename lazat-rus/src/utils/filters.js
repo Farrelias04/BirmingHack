@@ -1,3 +1,4 @@
+// Utility functions for processing recipes and applying dietary filters
 export const getMealIngredients = (recipe) => {
   if (recipe.isLocal) return recipe.ingredients;
   const list = [];
@@ -11,6 +12,7 @@ export const getMealIngredients = (recipe) => {
   return list;
 };
 
+// Extracts the first 6 steps from the recipe instructions
 export const getSteps = (recipe) => {
   return recipe.strInstructions
     .split("\n")
@@ -23,6 +25,7 @@ const veganBlacklist = ["chicken", "beef", "pork", "lamb", "fish", "egg", "milk"
 const vegetarianBlacklist = ["chicken", "beef", "pork", "lamb", "fish", "bacon", "ham", "prawn", "shrimp", "meat"];
 const lactoseBlacklist = ["milk", "cheese", "cream", "butter", "yogurt", "dairy"];
 
+// Checks if a recipe meets the criteria of the selected dietary filter
 export const applyFilter = (recipe, activeFilter) => {
   const ingredientText = getMealIngredients(recipe).join(" ").toLowerCase();
   if (activeFilter === "Halal") return !halalBlacklist.some((w) => ingredientText.includes(w));

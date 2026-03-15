@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getMealIngredients, getSteps } from "../../utils/filters";
 
+// Displays the recipe details page with image, ingredients and steps
 export default function RecipePage() {
   const router = useRouter();
   const [recipe, setRecipe] = useState(null);
@@ -27,6 +28,7 @@ export default function RecipePage() {
   const ingredients = getMealIngredients(recipe);
   const steps = getSteps(recipe);
 
+  // Main layout of the recipe page with header, image ingredients and steps
   return (
     <div className="min-h-screen bg-yellow-100">
       <div className="bg-red-800 px-8 py-6 flex items-center gap-4">
