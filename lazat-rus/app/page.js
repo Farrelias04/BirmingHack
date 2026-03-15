@@ -16,6 +16,7 @@ export default function Home() {
   const [hasSearched, setHasSearched] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
 
+  // Fetches recipes from TheMealDB API based on the last entered ingredient
   const fetchMealDb = async (ingredientList) => {
     setLoading(true);
     try {
@@ -46,6 +47,7 @@ export default function Home() {
     fetchMealDb(updated);
   };
 
+  // Filters local recipes based on entered ingredients and active dietary filter
   const filteredLocal =
     enteredIngredients.length === 0
       ? localRecipes
@@ -65,6 +67,7 @@ export default function Home() {
     router.push(`/recipe/${recipe.idMeal}`);
   };
 
+  // Main layout of the home page with header, input panel and recipe results
   return (
     <div className="min-h-screen bg-yellow-100">
       <div className="bg-red-800 px-8 py-6">
@@ -85,6 +88,7 @@ export default function Home() {
           onEnter={handleEnter}
         />
 
+        {/* Recipe results section with loading and empty states */}
         <div className="flex-1 p-6 flex flex-col gap-4 overflow-y-auto">
           {!hasSearched && (
             <p className="text-center text-gray-400 mt-10">

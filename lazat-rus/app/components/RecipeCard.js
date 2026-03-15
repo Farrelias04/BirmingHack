@@ -1,11 +1,13 @@
 "use client";
 
+// displays recipe card with an image, title, category and a local badge if applicable
 export default function RecipeCard({ recipe, onClick }) {
   return (
     <div
       onClick={onClick}
       className="flex bg-orange-200 rounded-2xl overflow-hidden cursor-pointer hover:shadow-lg hover:scale-[1.01] transition-all"
     >
+      {/* Recipe image section */}
       <img
         src={recipe.strMealThumb}
         alt={recipe.strMeal}
@@ -14,6 +16,7 @@ export default function RecipeCard({ recipe, onClick }) {
           (e.target.src = `https://placehold.co/224x176/f5a623/fff?text=No+Image`)
         }
       />
+      {/* Recipe details section */}
       <div className="p-5 flex flex-col justify-center">
         <h2 className="text-2xl font-extrabold text-gray-900">
           {recipe.strMeal}

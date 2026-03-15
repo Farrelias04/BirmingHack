@@ -10,6 +10,7 @@ export default function InputPanel({
   enteredIngredients,
   onEnter,
 }) {
+  // Input panel for entering ingredients, expiry date and selecting dietary filter
   return (
     <div className="w-96 bg-yellow-400 p-6 flex flex-col gap-4">
       <input
@@ -37,6 +38,7 @@ export default function InputPanel({
         </button>
       </div>
 
+      {/* Dietary filter dropdown */}
       <div className="flex flex-col gap-1">
         <label className="text-white font-bold uppercase text-xs tracking-widest">
           Dietary Filter
@@ -56,6 +58,7 @@ export default function InputPanel({
 
       <hr className="border-white" />
 
+      {/* Display entered ingredients */}
       <div className="bg-yellow-50 rounded-xl p-4 min-h-48">
         <p className="text-red-800 font-extrabold uppercase tracking-widest mb-3">
           Your Ingredient :
