@@ -14,7 +14,13 @@ export default function Home() {
   const [mealDbRecipes, setMealDbRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilters, setActiveFilters] = useState([]);
+
+  const toggleFilter = (filter) => {
+    setActiveFilters((prev) =>
+      prev.includes(filter) ? prev.filter((f) => f !== filter) : [...prev, filter]
+    );
+  };
 
   // Fetches recipes from TheMealDB API based on the last entered ingredient
   const fetchMealDb = async (ingredientList) => {
@@ -47,6 +53,18 @@ export default function Home() {
     fetchMealDb(updated);
   };
 
+  //add delete function
+    const handleDelete = (index) => {
+      const updated = enteredIngredients.filter((_, i) => i !== index);
+      setEnteredIngredients(updated);
+      if (updated.length === 0) {
+        setMealDbRecipes([]);
+        setHasSearched(false);
+      } else {
+        fetchMealDb(updated);
+      }
+  };
+  
   // Filters local recipes based on entered ingredients and active dietary filter
   const filteredLocal =
     enteredIngredients.length === 0
@@ -59,8 +77,12 @@ export default function Home() {
           )
         );
 
-  const filteredLocalFinal = filteredLocal.filter((r) => applyFilter(r, activeFilter));
-  const filteredMealDb = mealDbRecipes.filter((r) => applyFilter(r, activeFilter));
+  const filteredLocalFinal = filteredLocal.filter((r) =>
+    activeFilters.length === 0 || activeFilters.every((f) => applyFilter(r, f))
+  );
+  const filteredMealDb = mealDbRecipes.filter((r) =>
+    activeFilters.length === 0 || activeFilters.every((f) => applyFilter(r, f))
+  );
 
   const handleCardClick = (recipe) => {
     sessionStorage.setItem("selectedRecipe", JSON.stringify(recipe));
@@ -82,10 +104,11 @@ export default function Home() {
           setIngredient={setIngredient}
           expiryDate={expiryDate}
           setExpiryDate={setExpiryDate}
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
+          activeFilters={activeFilters}
+          toggleFilter={toggleFilter}
           enteredIngredients={enteredIngredients}
           onEnter={handleEnter}
+          onDelete={handleDelete}
         />
 
         {/* Recipe results section with loading and empty states */}
